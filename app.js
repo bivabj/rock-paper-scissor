@@ -56,7 +56,6 @@ const playRound = (playerChoice, computerChoice) => {
       }
     }
   }
-  //   return playerScore, computerScore;
 };
 
 const game = (playerChoice) => {

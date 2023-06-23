@@ -63,7 +63,7 @@ const game = (playerChoice) => {
   playRound(playerChoice, computerChoice);
   updateChoice(playerChoice, computerChoice);
   updateScore(playerScore, computerScore);
-  endGame();
+  endGame(playerScore, computerScore);
   //todo: reset game
 };
 

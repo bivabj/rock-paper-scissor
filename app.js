@@ -9,13 +9,13 @@ const scissorBtn = document.getElementById("scissorBtn");
 
 const playerSelection = document.getElementById("player");
 const computerSelection = document.getElementById("computer");
-const roundResult = document.getElementById("roundResult");   //result of each round
-const gameResult = document.getElementById("gameResult");     //result of full game(5 rounds)
-const currentScore = document.getElementById("currentScore");  //score of player and computer up until the current round
+const roundResult = document.getElementById("roundResult"); //result of each round
+const gameResult = document.getElementById("gameResult"); //result of full game(5 rounds)
+const currentScore = document.getElementById("currentScore"); //score of player and computer up until the current round
 
-rockBtn.addEventListener("click", () => game('rock'));
-paperBtn.addEventListener("click", () => game('paper'));
-scissorBtn.addEventListener("click", () => game('scissor'));
+rockBtn.addEventListener("click", () => game("rock"));
+paperBtn.addEventListener("click", () => game("paper"));
+scissorBtn.addEventListener("click", () => game("scissor"));
 
 //random choice for computer
 const getComputerChoice = () => {
@@ -59,32 +59,39 @@ const playRound = (playerChoice, computerChoice) => {
 };
 
 const game = (playerChoice) => {
-    computerChoice = getComputerChoice();
-    playRound(playerChoice,computerChoice);
-    updateChoice(playerChoice, computerChoice);
-    updateScore(playerScore,computerScore);
-    //function to endgame
+  computerChoice = getComputerChoice();
+  playRound(playerChoice, computerChoice);
+  updateChoice(playerChoice, computerChoice);
+  updateScore(playerScore, computerScore);
+  endGame();
+  //todo: reset game
 };
 
 //function to update score
 const updateScore = (playerScore, computerScore) => {
-    currentScore.textContent = `${playerScore} - ${computerScore}`;
-}
+  currentScore.textContent = `${playerScore} - ${computerScore}`;
+};
 
 //function to update choice
 const updateChoice = (playerChoice, computerChoice) => {
-    if(playerChoice === 'rock'){
-        playerSelection.textContent = "Rock";
-    }else if(playerChoice === 'paper'){
-        playerSelection.textContent = "Paper";
-    }else{
-        playerSelection.textContent = "Scissor";
-    }
-    if(computerChoice === 'rock'){
-        computerSelection.textContent = "Rock";
-    }else if(computerChoice === 'paper'){
-        computerSelection.textContent = "Paper";
-    }else{
-        computerSelection.textContent = "Scissor";
-    }
-}
+  if (playerChoice === "rock") {
+    playerSelection.textContent = "Rock";
+  } else if (playerChoice === "paper") {
+    playerSelection.textContent = "Paper";
+  } else {
+    playerSelection.textContent = "Scissor";
+  }
+  if (computerChoice === "rock") {
+    computerSelection.textContent = "Rock";
+  } else if (computerChoice === "paper") {
+    computerSelection.textContent = "Paper";
+  } else {
+    computerSelection.textContent = "Scissor";
+  }
+};
+
+const endGame = (playerScore, computerScore) => {
+  if (playerScore === 5 || computerScore === 5) {
+    gameResult.textContent = (playerScore > computerScore)? "YOU WON THE GAME": "YOU LOST, COMPUTER WON THE GAME";
+  }
+};
